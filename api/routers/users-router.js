@@ -33,7 +33,7 @@ router.get("/:id", async (req, res, next) => {
 //[PUT] update single user by ID
 router.put("/:id", async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params;//eslint disable
     const {
       username: user_username,
       password: user_password,
