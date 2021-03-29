@@ -54,7 +54,8 @@ Using Lambda's [build week template](https://github.com/LambdaSchool/build-week-
     ingredients: ["array", "here"], required,
     instructions: ["array", "here"], required,
     category: ["array", "here"], required,
-    photo_src: "string of link"
+    photo_src: "string of link",
+    user_id: integer, required, must correspond to a user_id
 }
 ```
 
