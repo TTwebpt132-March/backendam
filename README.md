@@ -1,4 +1,5 @@
 # Amanda's Backend:
+
 Using Lambda's [build week template](https://github.com/LambdaSchool/build-week-scaffolding-node)
 
 ## Using Lambda's [build week template](https://github.com/LambdaSchool/build-week-scaffolding-node)
@@ -42,4 +43,27 @@ Using Lambda's [build week template](https://github.com/LambdaSchool/build-week-
 
 ## Recipes:
 
-**Format:**
+**Format in database:**
+
+```javascript
+{
+    title: "string" required,
+    source: "string",
+    ingredients: ["array", "here"], required,
+    instructions: ["array", "here"], required,
+    category: ["array", "here"], required,
+    photo_src: "string of link"
+}
+```
+
+| ACTION                       | METHOD | ROUTE              | REQUIRED                                        |
+| ---------------------------- | ------ | ------------------ | ----------------------------------------------- |
+| Gets all recipes             | GET    | `/api/recipes`     | n/a                                             |
+| Read single recipe by ID     | GET    | `/api/recipes/:id` | n/a                                             |
+| Create a new recipe          | POST   | `/api/recipes`     | `{tittle, ingredients, category, instructions}` |
+| Update existing recipe by ID | PUT    | `/api/recipes/:id` | `{title, ingredients, category, instructions}`  |
+| Delete existing recipe by ID | DELETE | `/api/recipes/:id` | n/a                                             |
+
+## Backend Deployed on Heroku:
+
+(https://secretfamrecipe132.herokuapp.com/)
