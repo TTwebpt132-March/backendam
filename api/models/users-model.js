@@ -8,10 +8,12 @@ const find = () => {
 const findById = (id) => {
   return db("users").select("*").where({ user_id: id }).first();
 };
-const findBy = async (filter) => {
-  return db("users")
-    .select("user_id", "user_username", "user_password", "user_email")
-    .where(filter);
+const findByUsername = async (username) => {
+  const data = await db("users as u")
+    .where("u.user_username", username)
+    .select("*")
+    .first();
+  return data;
 };
 const updateUser = async (body, id) => {
   const [user_id] = await db("users")
@@ -52,7 +54,7 @@ const recipesByUser = async (id) => {
 module.exports = {
   find,
   findById,
-  findBy,
+  findByUsername,
   updateUser,
   addUser,
   deleteUser,

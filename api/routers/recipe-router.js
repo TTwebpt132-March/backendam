@@ -10,8 +10,8 @@ Middleware created: checkRecipeData, checkRecipeId
 const express = require("express");
 const recipes = require("../models/recipe-model");
 const {
-  checkRecipeData,
-  checkRecipeId,
+  checkRecipeData(),
+  checkRecipeId(),
 } = require("../middleware/recipeMiddleware");
 const router = express.Router();
 
@@ -25,7 +25,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 //[GET] single recipe by ID - async
-router.get("/:id", checkRecipeId, async (req, res, next) => {
+router.get("/:id", checkRecipeId(), async (req, res, next) => {
   try {
     const singleRecipe = await recipes.findById(req.params.id);
     return res.json(singleRecipe);
@@ -34,7 +34,7 @@ router.get("/:id", checkRecipeId, async (req, res, next) => {
   }
 });
 //[POST] new recipe - async
-router.post("/", checkRecipeData, async (req, res, next) => {
+router.post("/", checkRecipeData(), async (req, res, next) => {
   try {
     const {
       title: recipe_title,
@@ -60,7 +60,7 @@ router.post("/", checkRecipeData, async (req, res, next) => {
   }
 });
 //[PUT] edit recipe by ID - async
-router.put("/:id", checkRecipeId, checkRecipeData, async (req, res, next) => {
+router.put("/:id", checkRecipeId(), checkRecipeData(), async (req, res, next) => {
   try {
     const {
       title: recipe_title,
@@ -89,7 +89,7 @@ router.put("/:id", checkRecipeId, checkRecipeData, async (req, res, next) => {
   }
 });
 //[DELETE] a single recipe by ID - async
-router.delete("/:id", checkRecipeId, async (req, res, next) => {
+router.delete("/:id", checkRecipeId(), async (req, res, next) => {
   try {
     const { id } = req.params;
     await recipes.deleteRecipe(id);

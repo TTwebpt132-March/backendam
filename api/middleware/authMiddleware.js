@@ -41,19 +41,25 @@ const checkForData = (req, res, next) => {
 };
 const checkLogin = async (req, res, next) => {
   try {
-    const { username: user_username, password } = req.body;
-    if (!user_username || !password) {
+    const { username: user_username, password: user_password } = req.body;
+    if (!user_username || !user_password) {
       return res.status(404).json({
         message: "A username and password are required.",
       });
     }
-    const user = await users.findBy({ user_username }).first();
-    const passwordCheck = await bcrypt.compare(password, user.user_password);
-    if (!user || !passwordCheck) {
+    const user = await users.findByUsername(user_username);
+    console.log(user);
+    const passwordCheck = await bcrypt.compare(
+      user_password,
+      user.user_password
+    );
+    console.log(passwordCheck);
+    if (!user.user_username || !passwordCheck) {
       return res.status(404).json({
         message: "Invalid Credentials.",
       });
     }
+    console.log(`this worked.`);
     next();
   } catch (err) {
     next(err);
@@ -62,7 +68,7 @@ const checkLogin = async (req, res, next) => {
 const checkUsername = async (req, res, next) => {
   try {
     const { username: user_username } = req.body;
-    const user = await users.findBy({ user_username }).first();
+    const user = await users.findByUsername(user_username).first();
     if (user) {
       return res.status(409).json({
         message: "The username is already in the database.",

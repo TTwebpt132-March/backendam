@@ -15,9 +15,9 @@ const {
 //Create a new User (Register)
 router.post(
   "/register",
-  checkForData,
-  checkUsername,
-  checkEmail,
+  checkForData(),
+  checkUsername(),
+  checkEmail(),
   async (req, res, next) => {
     try {
       const {
@@ -37,7 +37,7 @@ router.post(
   }
 );
 // Logging in an existing user with a POST request:
-router.post("/login", checkLogin, async (req, res, next) => {
+router.post("/login", checkLogin(), async (req, res, next) => {
   try {
     const { username: user_username } = req.body;
     await user.findBy({ user_username }).first();
