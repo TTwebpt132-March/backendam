@@ -39,7 +39,7 @@ router.put("/:id", async (req, res, next) => {
       password: user_password,
       email: user_email,
     } = req.body;
-    const updateUser = await users.update({
+    const updateUser = await users.updateUser({
       user_username,
       user_password: await bcrypt.hash(user_password, process.env.HASH_LOOP),
       user_email,
@@ -52,7 +52,7 @@ router.put("/:id", async (req, res, next) => {
 //[DELETE] single user by ID
 router.delete("/:id", async (req, res, next) => {
   try {
-    await users.nuke(req.params.id);
+    await users.deleteUser(req.params.id);
     res.json({
       message: `The requested user has been deleted.`,
     });

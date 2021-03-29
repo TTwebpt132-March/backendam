@@ -3,8 +3,8 @@ const helmet = require("helmet");
 const cors = require("cors");
 const authRouter = require("./routers/auth-router");
 const usersRouter = require("./routers/users-router");
-//const recipesRouter = require('./routers/recipe-router')
-const private = require('./middleware/privateMiddleware')
+const recipesRouter = require("./routers/recipe-router");
+const private = require("./middleware/privateMiddleware");
 
 const server = express();
 server.use(express.json());
@@ -13,7 +13,7 @@ server.use(cors());
 
 server.use("/api/auth/", authRouter);
 server.use("/api/users/", private, usersRouter);
-//server.use("/api/recipes/", private, recipesRouter);
+server.use("/api/recipes/", private, recipesRouter);
 
 /* eslint-disable */
 server.get("/", (req, res, next) => {

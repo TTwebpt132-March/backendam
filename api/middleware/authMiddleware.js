@@ -12,7 +12,7 @@ const bcrypt = require("bcryptjs");
 
 const checkForData = (req, res, next) => {
   const { username: user_username, password: user_password } = req.body;
-  if (Object.keys(req.body).length < 1) {
+  if (!Object.keys(req.body).length) {
     return res.status(401).json({
       message: "A username and password are required",
     });
