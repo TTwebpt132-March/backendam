@@ -63,8 +63,8 @@ Using Lambda's [build week template](https://github.com/LambdaSchool/build-week-
 | ---------------------------- | ------ | ------------------ | ----------------------------------------------- |
 | Gets all recipes             | GET    | `/api/recipes`     | n/a                                             |
 | Read single recipe by ID     | GET    | `/api/recipes/:id` | n/a                                             |
-| Create a new recipe          | POST   | `/api/recipes`     | `{tittle, ingredients, category, instructions}` |
-| Update existing recipe by ID | PUT    | `/api/recipes/:id` | `{title, ingredients, category, instructions}`  |
+| Create a new recipe          | POST   | `/api/recipes`     | `{tittle, ingredients, instructions, category, user_id}` |
+| Update existing recipe by ID | PUT    | `/api/recipes/:id` | `{title, ingredients, instructions, category, user_id}`  |
 | Delete existing recipe by ID | DELETE | `/api/recipes/:id` | n/a                                             |
 
 ## Backend Deployed on Heroku:
