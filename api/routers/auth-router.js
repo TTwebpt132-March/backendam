@@ -57,3 +57,4 @@ router.post("/login", checkLogin, async (req, res, next) => {
     next(err);
   }
 });
+module.exports = router;

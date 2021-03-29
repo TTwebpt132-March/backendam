@@ -1,3 +1,5 @@
+const express = require("express");
+const router = express.Router();
 const jwt = require("jsonwebtoken");
 
 const checkToken = (req, res, next) => {
@@ -24,4 +26,5 @@ const checkToken = (req, res, next) => {
 
 module.exports = {
   checkToken,
+  router,
 };

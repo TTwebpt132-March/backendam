@@ -14,12 +14,15 @@ const addRecipe = async (recipe) => {
   return findById(recipe_id);
 };
 const updateRecipe = async (recipe, id) => {
-    const [recipe_id] = async db('recipes').update(recipe).where('recipe_id', id).returning('recipe_id')
-    return findById(recipe_id)
-}
-const deleteRecipe = id => {
-    return db('recipes').where({ recipe_id: id }).del()
-}
+  const [recipe_id] = await db("recipes")
+    .update(recipe)
+    .where("recipe_id", id)
+    .returning("recipe_id");
+  return findById(recipe_id);
+};
+const deleteRecipe = (id) => {
+  return db("recipes").where({ recipe_id: id }).del();
+};
 module.exports = {
   find,
   findById,
