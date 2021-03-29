@@ -1,5 +1,4 @@
 const db = require("../data/db-config");
-const { findBy } = require("./users-model");
 /*
 Project requirements: find all recipes, find single recipe by ID, create new recipe, update an existing recipe, delete an existing recipe.
 */

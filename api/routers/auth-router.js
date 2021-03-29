@@ -40,7 +40,7 @@ router.post(
 router.post("/login", checkLogin, async (req, res, next) => {
   try {
     const { username: user_username } = req.body;
-    const existingUser = await user.findBy({ user_username }).first();
+    await user.findBy({ user_username }).first();
     const token = jwt.sign(
       {
         userID: user.user_id,
