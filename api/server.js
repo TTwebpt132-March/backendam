@@ -13,9 +13,9 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
-server.use("/api/auth", authRouter);
-server.use("/api/users", private, usersRouter);
-server.use("/api/recipes", private, recipesRouter);
+//server.use("/api/auth", authRouter);
+//server.use("/api/users", private, usersRouter);
+//server.use("/api/recipes", private, recipesRouter);
 
 /* eslint-disable */
 server.get("/", (req, res, next) => {
