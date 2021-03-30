@@ -1,13 +1,14 @@
+require("dotenv").config();
 const bcrypt = require("bcryptjs");
 exports.seed = async function (knex) {
-  /*  await knex.schema.createTable("users", (users) => {
+  /*  knex.schema.createTable("users", (users) => {
     users.increments("user_id");
     users.string("user_username", 20).notNullable();
     users.string("user_password", 25).notNullable();
     users.string("user_email", 100).notNullable();
     users.timestamps(false, true); */
 
-  await knex("users").insert([
+  knex("users").insert([
     {
       user_id: 1,
       user_username: "MaloryArcher",

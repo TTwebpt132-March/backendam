@@ -15,6 +15,9 @@ const findByUsername = async (username) => {
     .first();
   return data;
 };
+const findBy = (filter) => {
+  return db("users").select("*").where(filter);
+};
 const updateUser = async (body, id) => {
   const [user_id] = await db("users")
     .update(body)
@@ -55,6 +58,7 @@ module.exports = {
   find,
   findById,
   findByUsername,
+  findBy,
   updateUser,
   addUser,
   deleteUser,
